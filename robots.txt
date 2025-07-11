@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://niuma.siteg.cc/sitemap.xml

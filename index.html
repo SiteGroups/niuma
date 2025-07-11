@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K2M25G876Y"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K2M25G876Y');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="天选牛马测试 - 通过趣味问答评估你的牛马等级，分析性格特点和职场适配度">
+  <meta name="keywords" content="天选牛马, 性格测试, 职场评估, 趣味问答, 牛马等级测试">
+  <meta name="author" content="牛马测试团队">
+  <meta name="robots" content="index, follow">
+  <title>天选牛马测试 - 趣味性格测试与职场评估工具</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <!-- Tailwind 配置 -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#FF6666',
+            gray: {
+              light: '#F9F9F9',
+              dark: '#333333'
+            },
+            tier: {
+              1: '#4CAF50', // 天选人
+              2: '#8BC34A', // 幸福人生
+              3: '#FFC107', // 普通人
+              4: '#FF9800', // 小牛马
+              5: '#FF5722', // 负重牛马
+              6: '#E53935'  // 极品牛马
+            }
+          },
+          fontFamily: {
+            sans: ['微软雅黑', 'sans-serif'],
+          },
+        },
+      }
+    }
+  </script>
+  
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .content-auto {
+        content-visibility: auto;
+      }
+      .card-shadow {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+      .input-checkbox {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #e2e8f0;
+        border-radius: 4px;
+        outline: none;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        position: relative;
+      }
+      .input-checkbox:checked {
+        border-color: theme('colors.primary');
+        background-color: theme('colors.primary');
+      }
+      .input-checkbox:checked::after {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 2px;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+      .tier-animation {
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .badge-animation {
+        animation: fadeIn 0.3s ease forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .card-hover {
+        transition: all 0.3s ease;
+      }
+      .card-hover:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gray-light min-h-screen font-sans">
+  <div class="container mx-auto px-4 py-8 max-w-3xl">
+    <!-- 头部区域 -->
+    <header class="mb-8 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-center md:text-left">
+        <div class="inline-block bg-primary/10 rounded-full p-2 mb-4">
+          <i class="fa fa-balance-scale text-primary text-2xl"></i>
+        </div>
+        <h1 class="text-[clamp(2rem,5vw,3rem)] font-bold text-primary mb-2 tracking-tight">
+          天选牛马问答
+        </h1>
+        <p class="text-gray-600 text-lg">测一测你是哪种职场牛马等级</p>
+      </div>
+      <div class="mt-4 md:mt-0">
+        <a href="en.html" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors flex items-center">
+          <i class="fa fa-language mr-2"></i> English
+        </a>
+      </div>
+    </header>
+    
+    <!-- 主内容区域 -->
+    <main class="bg-white rounded-xl p-6 card-shadow mb-8">
+      <!-- 词条分类卡片 -->
+      <div class="space-y-5">
+        <!-- 灰色词条（删除了 “灰色词条 (5分)” 里多余的方框及表述，直接简洁呈现词条分组 ） -->
+        <div class="bg-gray-50 rounded-lg p-5 border-l-4 border-gray-400 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-tag text-gray-400 mr-2"></i> 灰色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="本地人">
+              <span class="group-hover:text-gray-800 transition-colors">本地人（免探亲假等福利，员工流失小）</span>
+            </label>
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="无不良嗜好">
+              <span class="group-hover:text-gray-800 transition-colors">无不良嗜好（减少意外风险）</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 绿色词条 -->
+        <div class="bg-green-50 rounded-lg p-5 border-l-4 border-green-500 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-leaf text-green-500 mr-2"></i> 绿色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="不爱社交">
+              <span class="group-hover:text-gray-800 transition-colors">不爱社交、健身及旅行（下班假期多在家，对加班抗拒小）</span>
+            </label>
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="住得近">
+              <span class="group-hover:text-gray-800 transition-colors">住的离公司近（随叫随到，可处理紧急事）</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 蓝色词条 -->
+        <div class="bg-blue-50 rounded-lg p-5 border-l-4 border-blue-500 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-droplet text-blue-500 mr-2"></i> 蓝色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="性格软弱">
+              <span class="group-hover:text-gray-800 transition-colors">性格软弱（易被 PUA，服从性高）</span>
+            </label>
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="独生子女">
+              <span class="group-hover:text-gray-800 transition-colors">独生子女（可能加成高级词条效果）</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 紫色词条 -->
+        <div class="bg-purple-50 rounded-lg p-5 border-l-4 border-purple-500 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-gem text-purple-500 mr-2"></i> 紫色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="30岁以上">
+              <span class="group-hover:text-gray-800 transition-colors">30岁以上（追求稳定，投入工作多）</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 橙色词条 -->
+        <div class="bg-orange-50 rounded-lg p-5 border-l-4 border-orange-500 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-fire text-orange-500 mr-2"></i> 橙色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="老人身体不好">
+              <span class="group-hover:text-gray-800 transition-colors">家里老人身体不好（事假概率高，稳定性强）</span>
+            </label>
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="伴侣无工作">
+              <span class="group-hover:text-gray-800 transition-colors">伴侣没工作（稳定性低，工作量上限高）</span>
+            </label>
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="孩子刚出生">
+              <span class="group-hover:text-gray-800 transition-colors">孩子刚出生（事假概率高，工作量上限高）</span>
+            </label>
+          </div>
+        </div>
+        
+        <!-- 红色词条 -->
+        <div class="bg-red-50 rounded-lg p-5 border-l-4 border-red-500 card-hover">
+          <h2 class="text-lg font-semibold text-gray-700 mb-3 flex items-center">
+            <i class="fa fa-heart text-red-500 mr-2"></i> 红色词条 
+          </h2>
+          <div class="space-y-3">
+            <label class="flex items-center cursor-pointer group">
+              <input type="checkbox" class="input-checkbox mr-3" value="有房贷车贷">
+              <span class="group-hover:text-gray-800 transition-colors">有房贷车贷（债务压力大，稳定性极端）</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 计算按钮 -->
+      <button id="calculateBtn" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg flex items-center justify-center">
+        <i class="fa fa-calculator mr-2"></i> 计算牛马等级
+      </button>
+    </main>
+    
+    <!-- 结果展示区域 -->
+    <div id="resultContainer" class="bg-white rounded-xl p-6 card-shadow opacity-0 transition-opacity duration-500 transform translate-y-4">
+      <div class="text-center mb-4">
+        <h2 class="text-2xl font-bold text-gray-dark mb-1">你的测评结果</h2>
+        <p class="text-gray-500">根据你的选择，你属于：</p>
+      </div>
+      
+      <div id="resultCard" class="rounded-xl p-6 text-center tier-animation">
+        <div id="tierIcon" class="text-[clamp(2.5rem,8vw,4rem)] mb-3"></div>
+        <h3 id="tierName" class="text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-2"></h3>
+        <p id="tierScore" class="text-xl mb-4"></p>
+        <p id="tierDescription" class="text-gray-600 max-w-xl mx-auto"></p>
+      </div>
+    </div>
+    
+    <!-- 页脚（修改年份为2025） -->
+    <footer class="text-center text-gray-500 text-sm mt-12">
+      <p>© 2025 天选牛马问答 | 仅供娱乐，请勿当真</p>
+    </footer>
+  </div>
+
+  <script>
+    // 词条分值映射
+    const scoreMap = {
+      '本地人': 5,
+      '无不良嗜好': 5,
+      '不爱社交': 10,
+      '住得近': 10,
+      '性格软弱': 15,
+      '独生子女': 15,
+      '30岁以上': 20,
+      '老人身体不好': 30,
+      '伴侣无工作': 30,
+      '孩子刚出生': 30,
+      '有房贷车贷': 40
+    };
+    
+    // 等级描述映射
+    const tierMap = {
+      1: { name: '天选人', color: 'tier-1', icon: 'fa-star', description: '你是职场中的幸运儿，工作生活平衡得宜，压力较小，属于令人羡慕的少数群体。' },
+      2: { name: '幸福人生', color: 'tier-2', icon: 'fa-smile-o', description: '你拥有较为稳定的工作和生活，虽然有一定压力，但总体幸福感较高。' },
+      3: { name: '普通人', color: 'tier-3', icon: 'fa-meh-o', description: '你和大多数人一样，在工作和学习之间寻找平衡，偶尔感到压力但能应对。' },
+      4: { name: '小牛马', color: 'tier-4', icon: 'fa-frown-o', description: '你开始感受到工作的压力，偶尔需要加班或承担较重的任务，但仍有喘息空间。' },
+      5: { name: '负重牛马', color: 'tier-5', icon: 'fa-tired', description: '工作占据了你生活的大部分时间，压力较大，需要注意调整节奏，避免过度劳累。' },
+      6: { name: '极品牛马', color: 'tier-6', icon: 'fa-bolt', description: '你是职场中的超级战士，承受着巨大的压力和工作量，建议适当放松，保重身体。' }
+    };
+    
+    // 计算按钮点击事件
+    document.addEventListener('DOMContentLoaded', function() {
+      const calculateBtn = document.getElementById('calculateBtn');
+      if (calculateBtn) {
+        calculateBtn.addEventListener('click', calculate);
+      } else {
+        console.error('计算按钮未找到');
+      }
+    });
+    
+    // 计算并展示结果
+    function calculate() {
+      try {
+        console.log('计算按钮被点击，开始执行计算逻辑');
+        // 收集选中的词条和总分
+        let total = 0;
+        const selected = [];
+        
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        console.log('找到复选框数量:', checkboxes.length);
+        
+        checkboxes.forEach(checkbox => {
+          if (checkbox.checked) {
+            console.log('选中的词条:', checkbox.value);
+            if (scoreMap.hasOwnProperty(checkbox.value)) {
+              selected.push({
+                name: checkbox.value,
+                score: scoreMap[checkbox.value]
+              });
+              total += scoreMap[checkbox.value];
+              console.log('添加分数:', scoreMap[checkbox.value], '当前总分:', total);
+            } else {
+              console.warn('词条不在分数映射中:', checkbox.value);
+            }
+          }
+        });
+        
+        console.log('总得分:', total);
+        // 确定等级
+        let tier = 1;
+        if (total > 20) tier = 2;
+        if (total > 40) tier = 3;
+        if (total > 60) tier = 4;
+        if (total > 80) tier = 5;
+        if (total > 100) tier = 6;
+        console.log('计算得到等级:', tier);
+        
+        // 获取等级信息
+        const tierInfo = tierMap[tier];
+        if (!tierInfo) {
+          console.error('未找到等级信息:', tier);
+          return;
+        }
+        console.log('等级信息:', tierInfo);
+        
+        // 更新结果卡片
+        const resultCard = document.getElementById('resultCard');
+        const resultContainer = document.getElementById('resultContainer');
+        if (!resultCard || !resultContainer) {
+          console.error('结果容器未找到', {resultCard, resultContainer});
+          return;
+        }
+        
+        resultCard.className = `rounded-xl p-6 text-center tier-animation bg-${tierInfo.color}/10 border-2 border-${tierInfo.color}`;
+        resultContainer.classList.remove('opacity-0', 'translate-y-4');
+        console.log('结果容器已显示');
+        
+        document.getElementById('tierIcon').className = `text-[clamp(2.5rem,8vw,4rem)] mb-3 text-${tierInfo.color} fa ${tierInfo.icon}`;
+        document.getElementById('tierName').textContent = tierInfo.name;
+        document.getElementById('tierName').className = `text-[clamp(1.8rem,5vw,2.5rem)] font-bold mb-2 text-${tierInfo.color}`;
+        document.getElementById('tierScore').textContent = `总分: ${total} 分`;
+        document.getElementById('tierDescription').textContent = tierInfo.description;
+        
+        // 更新选中的词条
+        const selectedItemsContainer = document.getElementById('selectedItems');
+        selectedItemsContainer.innerHTML = '';
+        
+        // 添加词条徽章并添加动画
+        selected.forEach((item, index) => {
+          setTimeout(() => {
+            const badge = document.createElement('span');
+            badge.className = 'inline-block bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full animate-fadeIn';
+            badge.textContent = `${item.name} (+${item.score})`;
+            selectedItemsContainer.appendChild(badge);
+          }, index * 100);
+        });
+      } catch (error) {
+        console.error('计算逻辑执行失败', error);
+      }
+    }
+  </script>
+</body>
+</html>
